@@ -1,0 +1,36 @@
+<div ng-controller="BookListCtrl">
+    <h1 class="page-header">Book List</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="25px">ID</th>
+                <th>TITLE</th>
+                <th>PRICE</th>
+                <th>AUTHOR</th>
+                <th width="50px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in books">
+                <td>{{e.id}}</td>
+                <td>{{e.title}}</td>
+                <td>{{e.price|currency}}</td>
+                <td>{{e.author}}</td>
+                <!-- ng-show="user.id &&user.id==e.user_id" -->
+                <td><a ng-click="editBook($index)" ><i
+                            class="icon-pencil"></i>
+                    </a>
+                    &nbsp;
+                    <a ng-click="delBook($index)" ><i
+                            class="icon-remove-circle"></i></a></td>
+            </tr>
+        </tbody>
+    </table>
+<!-- ng-show="user.username" -->
+    <p>
+        <button type="button" class="btn btn-success" 
+                ng-click="addBook()">
+            <b class="icon-plus-sign"></b>Add Book
+        </button>
+    </p>
+</div>

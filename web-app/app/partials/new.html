@@ -1,0 +1,32 @@
+<div ng-controller="NewBookCtrl">
+	<form class="form-horizontal">
+		<h1 class="page-header">New Book</h1>
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label" for="title">Title</label>
+				<div class="controls">
+					<input id="title" type="text" class="input-block-level"
+						required="true" ng-model="book.title"></input>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="title">Author</label>
+				<div class="controls">
+					<input id="title" type="text" class="input-block-level"
+						required="true" ng-model="book.author"></input>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="title">Price</label>
+				<div class="controls">
+					<input id="title" type="number" class="input-block-level"
+						required="true" ng-model="book.price"></input>
+				</div>
+			</div>
+		</fieldset>
+		<div class="form-actions">
+			<button class="btn btn-primary" ng-click="saveBook()">Add
+				Book</button>
+		</div>
+	</form>
+</div>
