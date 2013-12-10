@@ -15,16 +15,14 @@
             return $location.url();
         };
 
-//        $scope.login = function() {
-//            $scope.$emit('event:loginRequest', $scope.username, $scope.password);
-//            //$location.path('/login');
-//        };
+        $scope.login = function() {
+            $scope.$emit('event:loginRequest', $scope.username, $scope.password);
+        };
 
         $scope.logout = function() {
             $rootScope.user = null;
             $scope.username = $scope.password = null;
             $scope.$emit('event:logoutRequest');
-            $location.url('/');
         };
 
         $rootScope.appUrl = "http://localhost:8080/angularjs-grails-sample";

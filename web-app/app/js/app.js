@@ -17,6 +17,7 @@
                 .otherwise({redirectTo: '/'});
 //        $httpProvider.defaults.useXDomain = true;
 //        delete $httpProvider.defaults.headers.common["X-Requested-With"];
+                console.log('@X-Requested-With@'+$httpProvider.defaults.headers.common["X-Requested-With"])
     });
 
     as.config(function($httpProvider) {
@@ -100,8 +101,8 @@
 
                         $rootScope.$on('event:loginRequired', function() {
                             console.log('fire event:loginRequired');
-                            //  $('#login').modal('show');
-                            $location.path('/login');
+                            $('#login').modal('show');
+                           
                         });
 
                         /**
