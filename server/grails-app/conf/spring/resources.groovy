@@ -20,24 +20,24 @@ beans = {
 	}
 	
 	
-//	customBasicAuthenticationEntryPoint(CustomBasicAuthenticationEntryPoint) {
-//		realmName = SpringSecurityUtils.securityConfig.basic.realmName // 'Grails Realm'
-//	}
-//	
-//	customBasicAuthenticationFilter(BasicAuthenticationFilter, ref('authenticationManager'), ref('customBasicAuthenticationEntryPoint')) {
-//		authenticationDetailsSource = ref('authenticationDetailsSource')
-//		rememberMeServices = ref('rememberMeServices')
-//		credentialsCharset = SpringSecurityUtils.securityConfig.basic.credentialsCharset // 'UTF-8'
-//	}
-//
-//	basicAccessDeniedHandler(AccessDeniedHandlerImpl)
-//
-//	basicRequestCache(NullRequestCache)
-//
-//	basicExceptionTranslationFilter(ExceptionTranslationFilter, ref('customBasicAuthenticationEntryPoint'), ref('basicRequestCache')) {
-//		accessDeniedHandler = ref('basicAccessDeniedHandler')
-//		authenticationTrustResolver = ref('authenticationTrustResolver')
-//		throwableAnalyzer = ref('throwableAnalyzer')
-//	}
+	customBasicAuthenticationEntryPoint(CustomBasicAuthenticationEntryPoint) {
+		realmName = SpringSecurityUtils.securityConfig.basic.realmName // 'Grails Realm'
+	}
+	
+	customBasicAuthenticationFilter(BasicAuthenticationFilter, ref('authenticationManager'), ref('customBasicAuthenticationEntryPoint')) {
+		authenticationDetailsSource = ref('authenticationDetailsSource')
+		rememberMeServices = ref('rememberMeServices')
+		credentialsCharset = SpringSecurityUtils.securityConfig.basic.credentialsCharset // 'UTF-8'
+	}
+
+	basicAccessDeniedHandler(AccessDeniedHandlerImpl)
+
+	basicRequestCache(NullRequestCache)
+
+	basicExceptionTranslationFilter(ExceptionTranslationFilter, ref('customBasicAuthenticationEntryPoint'), ref('basicRequestCache')) {
+		accessDeniedHandler = ref('basicAccessDeniedHandler')
+		authenticationTrustResolver = ref('authenticationTrustResolver')
+		throwableAnalyzer = ref('throwableAnalyzer')
+	}
 
 }

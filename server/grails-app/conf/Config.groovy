@@ -171,7 +171,7 @@ grails.plugin.springsecurity.useBasicAuth = true
 //grails.plugin.springsecurity.basic.realmName = "Ralph's Bait and Tackle"
 
 grails.plugin.springsecurity.filterChain.chainMap = [
-	'/api/**':'JOINED_FILTERS,-exceptionTranslationFilter',
-//	'/api/**': 'statelessSecurityContextPersistenceFilter,logoutFilter,customBasicAuthenticationFilter,securityContextHolderAwareRequestFilter,rememberMeAuthenticationFilter,anonymousAuthenticationFilter,basicExceptionTranslationFilter,filterInvocationInterceptor',
+//	'/api/**':'JOINED_FILTERS,-exceptionTranslationFilter',
+	'/api/**': 'statelessSecurityContextPersistenceFilter,logoutFilter,authenticationProcessingFilter,customBasicAuthenticationFilter,securityContextHolderAwareRequestFilter,rememberMeAuthenticationFilter,anonymousAuthenticationFilter,basicExceptionTranslationFilter,filterInvocationInterceptor',
 //	'/**': 'JOINED_FILTERS,-basicAuthenticationFilter,-basicExceptionTranslationFilter'
  ]

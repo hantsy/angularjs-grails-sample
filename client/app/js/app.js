@@ -152,11 +152,13 @@
                          * On 'logoutRequest' invoke logout on the server and broadcast 'event:loginRequired'.
                          */
                         $rootScope.$on('event:logoutRequest', function() {
-                            $http.get(apiUrl + '/unauthenticate')
-                                    .success(function(data) {
-                                        httpHeaders.common['Authorization'] = null;
-                                    });
-
+                           // $http.get(apiUrl + '/unauthenticate')
+                          //          .success(function(data) {
+                           //             httpHeaders.common['Authorization'] = null;
+                           //         });
+							httpHeaders.common['Authorization'] = null;
+						    $rootScope.user=null;
+							$location.path('/');
                         });
                     });
 
