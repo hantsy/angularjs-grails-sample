@@ -2,8 +2,7 @@ class UrlMappings {
 
 	static mappings = {
 		
-		"/api/authenticate(.${format})?"(controller:"user", action:"authenticate", method:"GET")
-		"/api/unauthenticate(.${format})?"(controller:"user", action:"unauthenticate", method:"GET")
+		"/api/status"(controller:"status", action:"index", method:"GET")
 		"/api/books"(resources:"book")
         "/$controller/$action?/$id?(.${format})?"{
             constraints {

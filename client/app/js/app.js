@@ -139,7 +139,7 @@
                             console.log('fire event: loginRequest. @event,' + event + ', username @' + username + ', password@' + password);
                             httpHeaders.common['Authorization'] = 'Basic ' + base64.encode(username + ':' + password);
 							console.log('try to login');
-                            $http.get(apiUrl + '/authenticate')
+                            $http.get(apiUrl + '/status')
                                     .success(function(data) {
                                         console.log('login data @' + data);
                                         $rootScope.user = data.user;

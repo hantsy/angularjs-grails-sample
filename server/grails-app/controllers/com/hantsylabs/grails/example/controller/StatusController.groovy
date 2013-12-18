@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserCache;
 
-class UserController {
+class StatusController {
 	
 	def springSecurityService
 	def userCache
 
-	def authenticate() {
+	def index() {
 		if(springSecurityService.isLoggedIn()) {
 			render([user:springSecurityService.currentUser] as JSON)
 		}else {
@@ -21,8 +21,4 @@ class UserController {
 		}
 	}
 	
-	def unauthenticate() {
-		SecurityContextHolder.clearContext()
-		response.setStatus(200)
-	}
 }
