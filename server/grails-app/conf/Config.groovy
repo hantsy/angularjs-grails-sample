@@ -107,7 +107,7 @@ grails.hibernate.cache.queries = false
 environments {
 	development {
 		grails.logging.jul.usebridge = true
-	//	grails.plugin.springsecurity.debug.useFilter = true
+		//	grails.plugin.springsecurity.debug.useFilter = true
 	}
 	production {
 		grails.logging.jul.usebridge = false
@@ -129,7 +129,7 @@ log4j = {
 			'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
 			'org.codehaus.groovy.grails.web.mapping',        // URL mapping
 			'org.codehaus.groovy.grails.commons',            // core / classloading
-			'org.codehaus.groovy.grails.plugins',            // plugins
+			'org.codehaus.groovy.grails.plugin',            // plugins
 			'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
 			'org.springframework',
 			'org.hibernate',
@@ -139,6 +139,17 @@ log4j = {
 			'grails.plugin.springsecurity'
 }
 
+//Grails Cache config.
+grails.cache.enabled=true
+//grails.cache.proxyTargetClass	false
+//grails.cache.aopOrder	Ordered.LOWEST_PRECEDENCE
+//grails.cache.clearAtStartup	false
+//grails.cache.keyGenerator	"customCacheKeyGenerator"
+grails.cache.config = {
+	cache { 
+		name 'xauth-token' 
+	}
+ }
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.hantsylabs.grails.example.security.Person'
@@ -153,8 +164,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
-	]
+	'/**/favicon.ico':                ['permitAll']]
 grails.plugin.springsecurity.interceptUrlMap = [
 	'/app/**':             ['permitAll'],
 	'/**/js/**':          ['permitAll'],
@@ -164,14 +174,79 @@ grails.plugin.springsecurity.interceptUrlMap = [
 	'/login/**':          ['permitAll'],
 	'/logout/**':         ['permitAll'],
 	'/api/status':          ['permitAll'],
-	'/**':				  ['isFullyAuthenticated()']
-	]
+	'/**':				  ['isFullyAuthenticated()']]
 
-grails.plugin.springsecurity.useBasicAuth = true
+//grails.plugin.springsecurity.useBasicAuth = true
 //grails.plugin.springsecurity.basic.realmName = "Ralph's Bait and Tackle"
 
-grails.plugin.springsecurity.filterChain.chainMap = [
-//	'/api/**':'JOINED_FILTERS,-exceptionTranslationFilter',
-	'/api/**': 'statelessSecurityContextPersistenceFilter,logoutFilter,authenticationProcessingFilter,customBasicAuthenticationFilter,securityContextHolderAwareRequestFilter,rememberMeAuthenticationFilter,anonymousAuthenticationFilter,basicExceptionTranslationFilter,filterInvocationInterceptor',
-//	'/**': 'JOINED_FILTERS,-basicAuthenticationFilter,-basicExceptionTranslationFilter'
- ]
+//Config for Spring Security REST plugin
+grails.plugin.springsecurity.rest.login.active=true
+grails.plugin.springsecurity.rest.login.endpointUrl="/api/login"
+grails.plugin.springsecurity.rest.login.failureStatusCode=401
+grails.plugin.springsecurity.rest.login.useJsonCredentials=true
+grails.plugin.springsecurity.rest.login.usernamePropertyName='username'
+grails.plugin.springsecurity.rest.login.passwordPropertyName='password'
+grails.plugin.springsecurity.rest.logout.endpointUrl='/api/logout'
+grails.plugin.springsecurity.rest.token.validation.headerName='X-Auth-Token'
+
+//token generation
+grails.plugin.springsecurity.rest.token.generation.useSecureRandom=true
+grails.plugin.springsecurity.rest.token.generation.useUUID=false
+
+//token storage
+// use memcached.
+//grails.plugin.springsecurity.rest.token.storage.useMemcached	false
+//grails.plugin.springsecurity.rest.token.storage.memcached.hosts	localhost:11211
+//grails.plugin.springsecurity.rest.token.storage.memcached.username	''
+//grails.plugin.springsecurity.rest.token.storage.memcached.password	''
+//grails.plugin.springsecurity.rest.token.storage.memcached.expiration	3600
+
+//use GROM
+//grails.plugin.springsecurity.rest.token.storage.useGorm	false
+//grails.plugin.springsecurity.rest.token.storage.gorm.tokenDomainClassName	null
+//grails.plugin.springsecurity.rest.token.storage.gorm.tokenValuePropertyName	tokenValue
+//grails.plugin.springsecurity.rest.token.storage.gorm.usernamePropertyName	username
+//class AuthenticationToken {
+//
+//	String tokenValue
+//	String username
+//}
+
+//use Cache
+grails.plugin.springsecurity.rest.token.storage.useGrailsCache=true
+grails.plugin.springsecurity.rest.token.storage.grailsCacheName='xauth-token'
+
+//token rendering
+grails.plugin.springsecurity.rest.token.rendering.usernamePropertyName='username'
+grails.plugin.springsecurity.rest.token.rendering.authoritiesPropertyName='roles'
+
+//if disable 'Bearer'
+//grails.plugin.springsecurity.rest.token.validation.useBearerToken = false
+//grails.plugin.springsecurity.rest.token.rendering.tokenPropertyName	access_token
+
+//Token validation
+grails.plugin.springsecurity.rest.token.validation.useBearerToken = false
+grails.plugin.springsecurity.rest.token.validation.headerName = 'X-Auth-Token'
+grails.plugin.springsecurity.rest.token.validation.active=true
+grails.plugin.springsecurity.rest.token.validation.endpointUrl='/api/validate'
+
+grails{
+	plugin{
+		springsecurity{
+			filterChain{
+				chainMap = [
+					'/api/guest/**': 'anonymousAuthenticationFilter,restTokenValidationFilter,restExceptionTranslationFilter,filterInvocationInterceptor',
+					'/api/**': 'JOINED_FILTERS,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter',  // Stateless chain
+					'/**': 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'                                          // Traditional chain
+
+					//	'/api/**':'JOINED_FILTERS,-exceptionTranslationFilter',
+					//	'/api/**': 'statelessSecurityContextPersistenceFilter,logoutFilter,authenticationProcessingFilter,customBasicAuthenticationFilter,securityContextHolderAwareRequestFilter,rememberMeAuthenticationFilter,anonymousAuthenticationFilter,basicExceptionTranslationFilter,filterInvocationInterceptor',
+					//	'/**': 'JOINED_FILTERS,-basicAuthenticationFilter,-basicExceptionTranslationFilter'
+				]
+			}
+			rest {
+				token { validation { enableAnonymousAccess = true } }
+			}
+		}
+	}
+}

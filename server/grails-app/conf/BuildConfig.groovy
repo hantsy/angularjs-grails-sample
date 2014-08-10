@@ -3,8 +3,8 @@ grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
 grails.project.work.dir = "target/work"
-grails.project.target.level = 1.6
-grails.project.source.level = 1.6
+grails.project.target.level = 1.8
+grails.project.source.level = 1.8
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 grails.project.fork = [
@@ -44,6 +44,8 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+		mavenRepo 'http://repo.spring.io/milestone'
+		mavenRepo 'http://repo.spring.io/release'
     }
 
     dependencies {
@@ -51,26 +53,33 @@ grails.project.dependency.resolution = {
         // runtime 'mysql:mysql-connector-java:5.1.24'
 		//agent "org.springsource.springloaded:springloaded-core:1.1.3"
 		
-		build "org.fusesource.jansi:jansi:1.11"
-		runtime "org.ebaysf.web:cors-filter:1.0.1"
+		//build "org.fusesource.jansi:jansi:1.11"
+		//runtime "org.ebaysf.web:cors-filter:1.0.1"
+		test "org.grails:grails-datastore-test-support:1.0-grails-2.4"
     }
 
     plugins {
 
 		
         // plugins for the build system only
-        build ":tomcat:7.0.47"
+        build ":tomcat:7.0.55"
 
         // plugins for the compile step
-        compile ":scaffolding:2.0.1"
-        compile ':cache:1.1.1'
-		compile ":spring-security-core:2.0-RC2"
+		//compile ":cache-ehcache:1.0.1"
+		compile ":asset-pipeline:1.9.6"
+        compile ":scaffolding:2.1.2"
+		compile ":cache:1.1.7"
+		compile ":spring-security-core:2.0-RC4"
+		compile ":spring-security-rest:1.4.0.RC5", {
+			excludes: 'spring-security-core'
+		}
 
         // plugins needed at runtime but not for compilation
-        runtime ":hibernate:3.6.10.6" // or ":hibernate4:4.1.11.4"
-        runtime ":database-migration:1.3.8"
-        runtime ":jquery:1.10.2"
-        runtime ":resources:1.2.1"
+       // runtime ":hibernate:3.6.10.6" // or
+		runtime ":hibernate4:4.3.5.5"
+        runtime ":database-migration:1.4.0"
+        runtime ":jquery:1.11.1"
+        //runtime ":resources:1.2.8"
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"
         //runtime ":cached-resources:1.1"
