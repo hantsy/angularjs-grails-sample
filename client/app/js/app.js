@@ -1,14 +1,13 @@
 (function() {
 
     var
-            //the HTTP headers to be used by all requests
-            httpHeaders,
-            //the message to be shown to the user
-            message,
-           
-
-   
-    as = angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 'myApp.controllers']);
+       // 'Authorization' = 'x-auth-token',
+        //the HTTP headers to be used by all requests
+        httpHeaders,
+        //the message to be shown to the user
+        message,
+        
+    as = angular.module('myApp', ['ngResource', 'ngCookies', 'myApp.filters', 'myApp.services', 'myApp.directives', 'myApp.controllers']);
     as.value('version', '1.0.7');
     as.value('apiUrl', 'http://localhost:8080/angularjs-grails-sample/api');
     as.config(function($routeProvider, $httpProvider) {
@@ -90,7 +89,7 @@
                         //console.log('http headers:'+ httpHeaders);
                     });
 
-                    as.run(function($rootScope, $http, $location, base64, apiUrl) {
+                    as.run(function($rootScope, $http, $location, base64, apiUrl, LoginService, $cookieStore) {
                         //make current message accessible to root scope and therefore all scopes
                         $rootScope.message = function() {
                             return message;
@@ -137,14 +136,24 @@
                             //                $rootScope.$broadcast('event:loginConfirmed');
                             //            });
                             console.log('fire event: loginRequest. @event,' + event + ', username @' + username + ', password@' + password);
-                            httpHeaders.common['Authorization'] = 'Basic ' + base64.encode(username + ':' + password);
-							console.log('try to login');
-                            $http.get(apiUrl + '/status')
-                                    .success(function(data) {
-                                        console.log('login data @' + data);
-                                        $rootScope.user = data.user;
-                                        $rootScope.$broadcast('event:loginConfirmed');
-                                    });
+       //                      httpHeaders.common['Authorization'] = 'Basic ' + base64.encode(username + ':' + password);
+							// console.log('try to login');
+       //                      $http.get(apiUrl + '/status')
+       //                              .success(function(data) {
+       //                                  console.log('login data @' + data);
+       //                                  $rootScope.user = data.user;
+       //                                  $rootScope.$broadcast('event:loginConfirmed');
+       //                              });
+                            //LoginService.authenticate({username: username, password: password}, function(user) {
+                              
+                            $http.post(apiUrl+'/login', {username: username, password: password})
+                                .success(function(user){
+                                    console.log('logged in successfully!')
+                                    $rootScope.user = user;
+                                    $http.defaults.headers.common['Authorization'] = 'Bearer '+user.token;
+                                    $cookieStore.put('user', user);
+                                    $rootScope.$broadcast('event:loginConfirmed');                               
+                                });
 
                         });
 
@@ -156,8 +165,8 @@
                           //          .success(function(data) {
                            //             httpHeaders.common['Authorization'] = null;
                            //         });
-							httpHeaders.common['Authorization'] = null;
-						    $rootScope.user=null;
+						    delete $http.defaults.headers.common['Authorization'] ;
+                            $cookieStore.remove('user');
 							$location.path('/');
                         });
                     });

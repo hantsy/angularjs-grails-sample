@@ -17,6 +17,22 @@
         this.setLanguage('en');
     });
 
+
+
+	as.factory('LoginService', function($resource, apiUrl) {
+		console.log('apiUrl@'+apiUrl);
+
+		return $resource(apiUrl+'/:action', {},
+				{
+					authenticate: {
+						method: 'POST',
+						params: {'action' : 'login'},
+						headers : {'Content-Type': 'application/json'}
+					}
+				}
+			);
+	});
+
 	as.service('base64', function () {
 		var keyStr = "ABCDEFGHIJKLMNOP" +
 			"QRSTUVWXYZabcdef" +

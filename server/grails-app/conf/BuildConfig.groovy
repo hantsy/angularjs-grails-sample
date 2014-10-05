@@ -66,11 +66,11 @@ grails.project.dependency.resolution = {
 
         // plugins for the compile step
 		//compile ":cache-ehcache:1.0.1"
-		compile ":asset-pipeline:1.9.6"
+		compile ":asset-pipeline:1.9.9"
         compile ":scaffolding:2.1.2"
-		compile ":cache:1.1.7"
+		compile ":cache:1.1.8"
 		compile ":spring-security-core:2.0-RC4"
-		compile ":spring-security-rest:1.4.0.RC5", {
+		compile ":spring-security-rest:1.4.0", {
 			excludes: 'spring-security-core'
 		}
 
@@ -85,6 +85,6 @@ grails.project.dependency.resolution = {
         //runtime ":cached-resources:1.1"
         //runtime ":yui-minify-resources:0.1.5"
 		
-		
+        runtime ":cors:1.1.6"
     }
 }
