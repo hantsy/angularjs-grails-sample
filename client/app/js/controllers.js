@@ -78,7 +78,7 @@
         }
     }]);
 
-    as.controller('EditBookCtrl', ['$scope', '$rootScope', '$http', '$location', 'apiUrl', function($scope, $rootScope, $http, $routeParams, $location, apiUrl) {
+    as.controller('EditBookCtrl', ['$scope', '$rootScope', '$http', '$routeParams', '$location', 'apiUrl', function($scope, $rootScope, $http, $routeParams, $location, apiUrl) {
 
         var load = function() {
             console.log('call load()...');
