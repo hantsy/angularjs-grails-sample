@@ -1,0 +1,176 @@
+repo_name: hantsy/angularjs-grails-sample
+report_id: 5084d14ed89dc1f2a5cf98ab869b4274
+version: 0.1
+repo_type: Public
+timestamp: '2024-01-31T08:49:23+00:00'
+requested_by: hantsy
+provider: github
+branch: master
+detected_tools_count: 14
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample
+  detection_source: Repo Metadata
+- name: Groovy
+  description: A multi-faceted language for the Java platform
+  website_url: https://groovy-lang.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/997/default_7ff5fcd857f42ad25149f659693d8930bffddf14.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample
+  detection_source: Repo Metadata
+- name: Ruby
+  description: A dynamic, interpreted, open source programming language with a focus
+    on simplicity and productivity
+  website_url: https://www.ruby-lang.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/989/ruby.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample
+  detection_source: Repo Metadata
+- name: Jasmine
+  description: DOM-less simple JavaScript testing framework
+  website_url: http://jasmine.github.io/
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/service/831/7c0b595409af531b9cdeb07f8c513e8b.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample/blob/master/client/package.json
+  detection_source: client/package.json
+  last_updated_by: hantsy
+  last_updated_on: 2013-12-12 12:35:45.000000000 Z
+- name: Karma
+  description: Spectacular Test Runner for JavaScript
+  website_url: http://karma-runner.github.io/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Browser Testing
+  image_url: https://img.stackshare.io/service/1420/TidYGd6a.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample/blob/master/client/package.json
+  detection_source: client/package.json
+  last_updated_by: hantsy
+  last_updated_on: 2013-12-12 12:35:45.000000000 Z
+- name: PhantomJS
+  description: Scriptable Headless WebKit
+  website_url: https://phantomjs.org/
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Headless Browsers
+  image_url: https://img.stackshare.io/service/1832/phantomjs.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample/blob/master/client/package.json
+  detection_source: client/package.json
+  last_updated_by: hantsy
+  last_updated_on: 2013-12-12 12:35:45.000000000 Z
+- name: Travis CI
+  description: A hosted continuous integration service for open source and private
+    projects
+  website_url: http://travis-ci.com/
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/460/Lu6cGu0z_400x400.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample/blob/master/client/.travis.yml
+  detection_source: client/.travis.yml
+  last_updated_by: hantsy
+  last_updated_on: 2013-12-12 12:35:45.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample/blob/master/client/package.json
+  detection_source: client/package.json
+  last_updated_by: hantsy
+  last_updated_on: 2013-12-12 12:35:45.000000000 Z
+- name: Apache Camel
+  description: A versatile open source integration framework
+  website_url: https://camel.apache.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Application Hosting
+  sub_category: Platform as a Service
+  image_url: https://img.stackshare.io/service/3276/xWt1RFo6_400x400.jpg
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample/blob/master/server/application.properties
+  detection_source: server/application.properties
+  last_updated_by: hantsy
+  last_updated_on: 2013-11-13 10:24:57.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample
+  detection_source: Repo Metadata
+- name: karma-jasmine
+  description: A Karma plugin - adapter for Jasmine testing framework
+  package_url: https://www.npmjs.com/karma-jasmine
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15886/default_7c39a83d4acd952df89b1ebfdb94c8646324fbf1.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample/blob/master/client/package.json
+  detection_source: client/package.json
+  last_updated_by: hantsy
+  last_updated_on: 2013-12-12 12:35:45.000000000 Z
+- name: karma-junit-reporter
+  description: A Karma plugin. Report results in junit xml format
+  package_url: https://www.npmjs.com/karma-junit-reporter
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16695/default_4b738bf1758d38dddd276589bbea47fca5a990df.png
+  detection_source_url: https://github.com/hantsy/angularjs-grails-sample/blob/master/client/package.json
+  detection_source: client/package.json
+  last_updated_by: hantsy
+  last_updated_on: 2013-12-12 12:35:45.000000000 Z
